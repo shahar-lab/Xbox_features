@@ -15,5 +15,5 @@ XInputSetState.restype = ctypes.c_uint
 
 # A helper function which can be used as is to set the desired vibration conditions
 def set_vibration(controller, left_motor, right_motor): #what is controller?
-    vibration = XINPUT_VIBRATION(int(left_motor * 65535), int(right_motor * 65535)) #what are those numbers? 
+    vibration = XINPUT_VIBRATION(int(left_motor * 65535), int(right_motor * 65535)) #what are those numbers? I mean what are their actual meaning?
     XInputSetState(controller, ctypes.byref(vibration))
