@@ -1,5 +1,5 @@
 import pygame
-
+#IDO: I need some general explanation here about what's going on... which game are we initializing?
 # Initializing game
 pygame.init()
 j = pygame.joystick.Joystick(0)
@@ -29,7 +29,7 @@ events.type == pygame.JOYBUTTONDOWN
 # LEFTTHUMB Stick = 9
 # RIGHTTHUMB Stick = 10
 
-if (events.button) == 5: 
+if (events.button) == 5: #so here we just checked that it works or did we do anything important?
     print("pressed DOWN/UP right bumper button")
 
 
