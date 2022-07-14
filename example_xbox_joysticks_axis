@@ -1,0 +1,40 @@
+from psychopy import visual, event, core, data
+import pygame
+
+#initialise window
+myscreen = {}
+myscreen['hight'] = 500
+myscreen['width'] = 500
+win   = visual.Window([myscreen['width'],myscreen['hight']], fullscr=False, units='pix')
+
+#initialise some stimuli
+circle1 = visual.Circle(win, radius = 10, fillColor= 'yellow')
+circle2 = visual.Circle(win, radius = 10, fillColor= 'blue')
+
+#initialise pygame joystick 
+pygame.init() 
+myjoystick = pygame.joystick.Joystick(0)
+myjoystick.init()
+
+
+
+trial=1
+while trial<500:
+                    events = pygame.event.poll()
+                    if (events.type == pygame.JOYAXISMOTION):
+                        
+                        # get joysticks axes
+                        x1=myjoystick.get_axis(0)
+                        y1=-(myjoystick.get_axis(1)) #for joysticks up and down axis is reversed 
+                        y2=-(myjoystick.get_axis(3)) #for joysticks up and down axis is reversed 
+                        x2=myjoystick.get_axis(4)
+
+                        #print circles according to the joystick, adjusted with the screen size           
+                        circle1.pos = [x1*myscreen['width']/2,y1*myscreen['hight']/2]
+                        circle2.pos = [x2*myscreen['width']/2,y2*myscreen['hight']/2]
+                        circle1.draw()
+                        circle2.draw()
+                        win.flip()
+
+                        #this is just to make the loop after a certian amount of joystick moves
+                        trial=trial+1
