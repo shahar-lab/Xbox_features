@@ -10,6 +10,9 @@ win   = visual.Window([myscreen['width'],myscreen['hight']], fullscr=False, unit
 #initialise some stimuli
 circle1 = visual.Circle(win, radius = 10, fillColor= 'yellow')
 circle2 = visual.Circle(win, radius = 10, fillColor= 'blue')
+circle1.draw()
+circle2.draw()
+win.flip()
 
 #initialise pygame joystick 
 pygame.init() 
@@ -18,9 +21,9 @@ myjoystick.init()
 
 
 
-trial=1
-while trial<500:
+while True:
                     events = pygame.event.poll()
+                    #check joystick input
                     if (events.type == pygame.JOYAXISMOTION):
                         
                         # get joysticks axes
@@ -35,6 +38,8 @@ while trial<500:
                         circle1.draw()
                         circle2.draw()
                         win.flip()
+                    #check to see if the button 'A' in the controller was pressed to stop the program    
+                    if(events.type == pygame.JOYBUTTONDOWN):
+                        if(events.button == 0):
+                            break
 
-                        #this is just to make the loop after a certian amount of joystick moves
-                        trial=trial+1
