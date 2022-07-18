@@ -1,3 +1,4 @@
+#aim: present on screen the code number of the xbox controller buttons
 from psychopy import visual, event, core, data
 import pygame
 
