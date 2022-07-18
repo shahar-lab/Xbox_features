@@ -1,0 +1,24 @@
+from psychopy import visual, event, core, data
+import pygame
+
+#initialise window
+win   = visual.Window([500,500], fullscr=False, units='pix')
+
+#initialise pygame joystick 
+pygame.init() 
+myjoystick = pygame.joystick.Joystick(0)
+myjoystick.init()
+
+#text where the button number will appear
+title = visual.TextStim(win, 'your xbox key number is',color=(0, 1, 0), colorSpace='rgb')
+title.draw()
+stim = visual.TextStim(win, '',color=(0, 1, 0), colorSpace='rgb',pos=(0,-50))
+
+trials=1
+while trials<=10:
+                events = pygame.event.poll()
+                if(events.type == pygame.JOYBUTTONDOWN):
+                    stim.text=events.button
+                    stim.draw()
+                    win.flip()
+                    trials=trials+1      
