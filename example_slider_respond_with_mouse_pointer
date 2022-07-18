@@ -1,0 +1,17 @@
+#simple visual analog scale where subjects react with the mouse pointer
+
+from psychopy.visual.window import Window
+from psychopy.visual.slider import Slider
+
+win = Window()
+vas = Slider(win,
+             ticks=(1, 100),
+             labels=('Not at all confident', 'Extremely confident'),
+             granularity=1,
+             color='white')
+
+while not vas.rating:
+    vas.draw()
+    win.flip()
+
+print(f'Rating: {vas.rating}, RT: {vas.rt}')
